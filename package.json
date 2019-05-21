@@ -1,7 +1,7 @@
 {
   "name": "share-info",
   "version": "0.1.0",
-  "description": "",
+  "description": "This module will scrape metadata from the URL shared",
   "main": "./lib/index.js",
   "scripts": {
     "test": "mocha --timeout 20000"

@@ -1,6 +1,20 @@
 # share-info
 
+This module will scrape metadata from the URL shared
+
 Module in pure javascript for node.js
+
+Crawling supports:
+- Configurable pool size and retries
+- Control rate limit
+- Priority queue of requests
+- Parser with Cheerio
+
+Scraping meta information supports:
+- the `<title>` tag in the document head
+- `meta[name="description"]` tag
+- `meta[property="og"]` tag
+- `meta[name="twitter"]` tag
 
 ## Installation
 
