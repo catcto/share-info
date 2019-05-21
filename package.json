@@ -1,0 +1,35 @@
+{
+  "name": "share-info",
+  "version": "0.1.0",
+  "description": "",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "mocha --timeout 20000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catcto/share-info.git"
+  },
+  "keywords": [
+    "crawler",
+    "metadata",
+    "metatag",
+    "sharing content",
+    "social media"
+  ],
+  "author": "catcto (https://github.com/catcto)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/catcto/share-info/issues"
+  },
+  "homepage": "https://github.com/catcto/share-info#readme",
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  },
+  "dependencies": {
+    "async": "^3.0.0",
+    "cheerio": "^1.0.0-rc.3",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0"
+  }
+}
