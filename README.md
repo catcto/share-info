@@ -42,7 +42,7 @@ var url = 'https://github.com/';
 request(url, function (error, response, body) {
 
     var shareInfo = new ShareInfo();
-    var results = shareInfo.parse(url, body);
+    var results = shareInfo.parse(url, body); //default cheerio
 
     //var cheerio = require('cheerio');
     //var $ = cheerio.load('<title>GitHub</title>');
