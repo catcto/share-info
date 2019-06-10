@@ -1,6 +1,6 @@
 {
   "name": "share-info",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This module will scrape metadata from the URL shared",
   "main": "./lib/index.js",
   "scripts": {
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/catcto/share-info.git"
+  },
+  "engines": {
+    "node": ">= 0.8"
   },
   "keywords": [
     "crawler",

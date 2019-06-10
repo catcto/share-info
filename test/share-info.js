@@ -1,8 +1,9 @@
-const assert = require('assert');
-const ShareInfo = require('..');
+var assert = require('assert');
+var ShareInfo = require('..');
 
 describe('ShareInfo', () => {
     it('crawelr', (itDone) => {
+        var taskCount = 0;
         var shareCrawler = new ShareInfo({
             gzip: true,
             maxConnections: 3,
@@ -12,19 +13,31 @@ describe('ShareInfo', () => {
             retryTimeout: 3000,
             callback: function (error, results, done) {
                 if (error) {
-                    itDone(error);
+                    console.error(error);
                 } else {
                     console.log(JSON.stringify(results.parser.share, null, 4));
                     //console.log(results.req);
                     //console.log(results.res);
-                    itDone();
                 }
                 done();
+                taskCount++;
+                if (taskCount == 1) {
+                    itDone();
+                }
             }
         });
         shareCrawler.queue(["https://github.com", "https://stackoverflow.com"]);
         shareCrawler.queue("https://www.npmjs.com", { rejectUnauthorized: false });
     });
 
-
+    it('parser', (itDone) => {
+        var request = require('request');
+        var url = 'https://github.com/';
+        request(url, function (error, response, body) {
+            var shareInfo = new ShareInfo();
+            var results = shareInfo.parse(url, body)
+            console.log(JSON.stringify(results, null, 4));
+            itDone();
+        });
+    });
 });

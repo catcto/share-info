@@ -31,7 +31,83 @@ Installation is done using the
 $ npm install share-info
 ```
 
-## Demo
+## Example
+
+`shareInfo.parse(url, body, $)`
+
+```js
+var request = require('request');
+var url = 'https://github.com/';
+
+request(url, function (error, response, body) {
+
+    var shareInfo = new ShareInfo();
+    var results = shareInfo.parse(url, body);
+
+    //var cheerio = require('cheerio');
+    //var $ = cheerio.load('<title>GitHub</title>');
+    //shareInfo.parse(url, null, $);
+
+    console.log(results);
+});
+```
+
+### Results
+
+```json
+{
+    "title": "npm | build amazing things",
+    "description": "",
+    "image": "https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+    "url": "https://www.npmjs.com/",
+    "site_name": "npmjs.com"
+}
+{
+    "title": "Build software better, together",
+    "description": "GitHub is where people build software. More than 36 million people use GitHub to discover, fork, and contribute to over 100 million projects.",
+    "image": "https://github.githubassets.com/images/modules/open_graph/github-logo.png",
+    "url": "https://github.com/",
+    "site_name": "GitHub"
+}
+{
+    "share": {
+        "title": "Build software better, together",
+        "description": "GitHub is where people build software. More than 36 million people use GitHub to discover, fork, and contribute to over 100 million projects.",
+        "image": "https://github.githubassets.com/images/modules/open_graph/github-logo.png",
+        "url": "https://github.com/",
+        "site_name": "GitHub"
+    },
+    "meta": {
+        "title": "The world’s leading software development platform · GitHub",
+        "description": "GitHub brings together the world’s largest community of developers to discover, share, and build better software. From open source projects to private team repositories, we’re your all-in-one platform for collaborative development.",
+        "keywords": ""
+    },
+    "og": {
+        "og:url": "https://github.com",
+        "og:site_name": "GitHub",
+        "og:title": "Build software better, together",
+        "og:description": "GitHub is where people build software. More than 36 million people use GitHub to discover, fork, and contribute to over 100 million projects.",
+        "og:image": "https://github.githubassets.com/images/modules/open_graph/github-octocat.png",
+        "og:image:type": "image/png",
+        "og:image:width": "1200",
+        "og:image:height": "620"
+    },
+    "twitter": {
+        "twitter:site": "github",
+        "twitter:site:id": "13334762",
+        "twitter:creator": "github",
+        "twitter:creator:id": "13334762",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "GitHub",
+        "twitter:description": "GitHub is where people build software. More than 36 million people use GitHub to discover, fork, and contribute to over 100 million projects.",
+        "twitter:image:src": "https://github.githubassets.com/images/modules/open_graph/github-logo.png",
+        "twitter:image:width": "1200",
+        "twitter:image:height": "1200"
+    }
+}
+```
+
+## Use Crawler
 
 ```js
 var shareCrawler = new ShareInfo({
