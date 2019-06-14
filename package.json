@@ -1,6 +1,6 @@
 {
   "name": "share-info",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "This module will scrape metadata from the URL shared",
   "main": "./lib/index.js",
   "scripts": {
