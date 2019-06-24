@@ -16,7 +16,7 @@ describe('ShareInfo', () => {
                     console.error(error);
                 } else {
                     console.log(JSON.stringify(results.parser.share, null, 4));
-                    //console.log(results.req);
+                    console.log(results.req.context);
                     //console.log(results.res);
                 }
                 done();
@@ -26,8 +26,8 @@ describe('ShareInfo', () => {
                 }
             }
         });
-        shareCrawler.queue(["https://github.com", "https://stackoverflow.com"]);
-        shareCrawler.queue("https://www.npmjs.com", { rejectUnauthorized: false });
+        shareCrawler.queue(['https://github.com', 'https://stackoverflow.com', 'https://toutiao.io']);
+        shareCrawler.queue({ url: 'https://www.npmjs.com', rejectUnauthorized: false, context: { a: 1, b: 2 } });
     });
 
     it('parser', (itDone) => {

@@ -33,47 +33,26 @@ $ npm install share-info
 
 ## Example
 
-`shareInfo.parse(url, body, $)`
+`shareInfo.parse(url, html)`
 
 ```js
 var request = require('request');
 var url = 'https://github.com/';
 
 request(url, function (error, response, body) {
-
     var shareInfo = new ShareInfo();
-    var results = shareInfo.parse(url, body); //default cheerio
-
-    //var cheerio = require('cheerio');
-    //var $ = cheerio.load('<title>GitHub</title>');
-    //shareInfo.parse(url, null, $);
-
+    var results = shareInfo.parse(url, body);
     console.log(results);
 });
 ```
-
-### Results
-
 ```json
-{
-    "title": "npm | build amazing things",
-    "description": "",
-    "image": "https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
-    "url": "https://www.npmjs.com/",
-    "site_name": "npmjs.com"
-}
-{
-    "title": "Build software better, together",
-    "description": "GitHub is where people build software. More than 36 million people use GitHub to discover, fork, and contribute to over 100 million projects.",
-    "image": "https://github.githubassets.com/images/modules/open_graph/github-logo.png",
-    "url": "https://github.com/",
-    "site_name": "GitHub"
-}
+//results
 {
     "share": {
         "title": "Build software better, together",
         "description": "GitHub is where people build software. More than 36 million people use GitHub to discover, fork, and contribute to over 100 million projects.",
         "image": "https://github.githubassets.com/images/modules/open_graph/github-logo.png",
+        "icon": "https://github.githubassets.com/favicon.ico",
         "url": "https://github.com/",
         "site_name": "GitHub"
     },
@@ -125,25 +104,14 @@ var shareCrawler = new ShareInfo({
             //console.log(results.parser.meta);
             //console.log(results.parser.og);
             //console.log(results.parser.twitter);
-            //console.log(results.req);
+            //console.log(results.req.context);
             //console.log(results.res);
         }
         done();
     }
 });
 shareCrawler.queue(["https://github.com", "https://stackoverflow.com"]);
-shareCrawler.queue("https://www.npmjs.com", {rejectUnauthorized: false});
-```
-
-### Results
-
-```json
-{
-    "title": "npm | build amazing things",
-    "image": "https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
-    "url": "https://www.npmjs.com",
-    "site_name": "npmjs.com"
-}
+shareCrawler.queue({ url: 'https://www.npmjs.com', rejectUnauthorized: false, context: { a: 1, b: 2 } });
 ```
 
 ```json
@@ -151,18 +119,30 @@ shareCrawler.queue("https://www.npmjs.com", {rejectUnauthorized: false});
     "title": "Stack Overflow - Where Developers Learn, Share, & Build Careers",
     "description": "Stack Overflow | The World’s Largest Online Community for Developers",
     "image": "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded",
+    "icon": "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a",
     "url": "https://stackoverflow.com/",
     "site_name": "Stack Overflow"
 }
 ```
-
 ```json
 {
     "title": "Build software better, together",
     "description": "GitHub is where people build software. More than 36 million people use GitHub to discover, fork, and contribute to over 100 million projects.",
     "image": "https://github.githubassets.com/images/modules/open_graph/github-logo.png",
-    "url": "https://github.com",
+    "icon": "https://github.githubassets.com/favicon.ico",
+    "url": "https://github.com/",
     "site_name": "GitHub"
+}
+```
+```json
+{ a: 1, b: 2 }
+{
+    "title": "npm | build amazing things",
+    "description": "",
+    "image": "https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+    "icon": "https://static.npmjs.com/1996fcfdf7ca81ea795f67f093d7f449.png",
+    "url": "https://www.npmjs.com/",
+    "site_name": "npmjs.com"
 }
 ```
 
