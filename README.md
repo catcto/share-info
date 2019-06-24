@@ -135,7 +135,6 @@ shareCrawler.queue({ url: 'https://www.npmjs.com', rejectUnauthorized: false, co
 }
 ```
 ```json
-{ a: 1, b: 2 }
 {
     "title": "npm | build amazing things",
     "description": "",
