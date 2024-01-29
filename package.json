@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/catcto/share-info#readme",
   "devDependencies": {
-    "mocha": "^6.1.4"
+    "mocha": "^10.2.0"
   },
   "dependencies": {
     "async": "^3.0.0",
